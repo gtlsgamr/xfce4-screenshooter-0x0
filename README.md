@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/apps/xfce4-screenshooter/-/blob/master/COPYING)
 
-**NOTE:** This is a custom xfce4-screenshooter version that uploads images to 0x0.st like hosts, instead of imgur. To change the host location, you can edit the `upload_url` variable in lib/screenshooter-imgur.c.
+**NOTE:** This is a custom xfce4-screenshooter build that uploads images to 0x0.st like hosts, instead of imgur. To change the host location, you can edit the `upload_url` variable in lib/screenshooter-imgur.c.
 
 # xfce4-screenshooter
 
