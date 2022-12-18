@@ -351,8 +351,8 @@ cb_ask_for_information (ScreenshooterJob *job,
 
 void cb_image_uploaded (ScreenshooterJob  *job,
                         gchar             *upload_name,
-                        gchar             *delete_hash,
-                        gchar            **last_user)
+                        gchar             *delete_hash
+               )
 {
   ScreenshooterImgurDialog *dialog;
 

@@ -48,7 +48,8 @@ imgur_upload_job (ScreenshooterJob *job, GArray *param_values, GError **error)
   xmlDoc *doc;
   xmlNode *root_node, *child_node;
 
-  const gchar *upload_url = "https://api.imgur.com/3/upload.xml";
+  /*const gchar *upload_url = "https://api.imgur.com/3/upload.xml";*/
+  const gchar *upload_url = "http://0.vern.cc";
 
   GError *tmp_error = NULL;
 
@@ -92,13 +93,13 @@ imgur_upload_job (ScreenshooterJob *job, GArray *param_values, GError **error)
   mp = soup_multipart_new(SOUP_FORM_MIME_TYPE_MULTIPART);
   buf = g_mapped_file_get_bytes (mapping);
 
-  soup_multipart_append_form_file (mp, "image", NULL, NULL, buf);
+  soup_multipart_append_form_file (mp, "file", title, NULL, buf);
   soup_multipart_append_form_string (mp, "name", title);
   soup_multipart_append_form_string (mp, "title", title);
   msg = soup_message_new_from_multipart (upload_url, mp);
 
-  /* for v3 API - key registered *only* for xfce4-screenshooter! */
-  soup_message_headers_append (soup_message_get_request_headers (msg), "Authorization", "Client-ID 66ab680b597e293");
+  /* for v3 API - key registered *only* for xfce4-screenshooter! 
+  soup_message_headers_append (soup_message_get_request_headers (msg), "Authorization", "Client-ID 66ab680b597e293");*/
   exo_job_info_message (EXO_JOB (job), _("Upload the screenshot..."));
 
   response = soup_session_send_and_read (session, msg, NULL, &tmp_error);
@@ -119,7 +120,7 @@ imgur_upload_job (ScreenshooterJob *job, GArray *param_values, GError **error)
     }
 
   TRACE("response was %s\n", (gchar*) g_bytes_get_data (response, NULL));
-  /* returned XML is like <data type="array" success="1" status="200"><id>xxxxxx</id> */
+  /* returned XML is like <data type="array" success="1" status="200"><id>xxxxxx</id> 
   doc = xmlParseMemory (g_bytes_get_data (response, NULL), g_bytes_get_size (response));
 
   root_node = xmlDocGetRootElement(doc);
@@ -129,17 +130,21 @@ imgur_upload_job (ScreenshooterJob *job, GArray *param_values, GError **error)
       online_file_name = xmlNodeGetContent(child_node);
     else if (xmlStrEqual (child_node->name, (const xmlChar *) "deletehash"))
       delete_hash = xmlNodeGetContent (child_node);
-  }
+  }*/
 
-  TRACE("found picture id %s\n", online_file_name);
+  char *abc = (guchar*) g_bytes_get_data (response, NULL);
+
+  printf("%s",abc+17);
+  TRACE("found picture id %s\n", abc);
   xmlFreeDoc(doc);
   g_bytes_unref (response);
 
   screenshooter_job_image_uploaded (job,
-                                    (const gchar*) online_file_name,
-                                    (const gchar*) delete_hash);
+                                    (const gchar*) abc+17,
+                                    (const gchar*) abc+17);
 
   g_free (online_file_name);
+  //g_free (abc);
   g_free (delete_hash);
 
   return TRUE;

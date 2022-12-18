@@ -116,10 +116,11 @@ screenshooter_imgur_dialog_new (const gchar *upload_name,
 
   self = g_object_new (SCREENSHOOTER_TYPE_IMGUR_DIALOG, NULL);
 
-  self->image_url = g_strdup_printf ("https://imgur.com/%s.png", upload_name);
-  self->thumbnail_url = g_strdup_printf ("https://imgur.com/%sl.png", upload_name);
-  self->small_thumbnail_url = g_strdup_printf ("https://imgur.com/%ss.png", upload_name);
-  self->delete_link = g_strdup_printf ("https://imgur.com/delete/%s", delete_hash);
+  self->image_url = g_strdup_printf ("http://0.vern.cc/%s", upload_name);
+  printf("%s",upload_name);
+  self->thumbnail_url = g_strdup_printf ("http://0.vern.cc/%s", upload_name);
+  self->small_thumbnail_url = g_strdup_printf ("http://0.vern.cc/%s", upload_name);
+  self->delete_link = g_strdup_printf ("http://0.vern.cc/%s", delete_hash);
 
   builder = gtk_builder_new_from_string (screenshooter_imgur_dialog_ui,
                                          screenshooter_imgur_dialog_ui_length);

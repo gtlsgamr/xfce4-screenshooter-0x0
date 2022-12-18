@@ -53,8 +53,8 @@ cb_update_info                     (ExoJob            *job,
 void
 cb_image_uploaded                  (ScreenshooterJob  *job,
                                     gchar             *upload_name,
-                                    gchar             *delete_hash,
-                                    gchar            **last_user);
+                                    gchar             *delete_hash
+                                    );
 void
 cb_ask_for_information             (ScreenshooterJob  *job,
                                     GtkListStore      *liststore,
