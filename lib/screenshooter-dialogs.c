@@ -1297,12 +1297,12 @@ GtkWidget *screenshooter_actions_dialog_new (ScreenshotData *sd)
 
       radio =
         gtk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (radio),
-                                                    _("Host on Imgur™"));
+                                                    _("Host on 0x0"));
       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio),
                                   (sd->action & UPLOAD_IMGUR));
       gtk_widget_set_tooltip_text (radio,
-                                  _("Host the screenshot on Imgur™, a free online "
-                                    "image hosting service"));
+                                  _("Host the screenshot on 0.vern, a free online "
+                                    "file hosting service"));
       g_signal_connect (G_OBJECT (radio), "toggled",
                         G_CALLBACK (cb_imgur_toggled), sd);
       g_signal_connect (G_OBJECT (radio), "activate",
@@ -1315,9 +1315,7 @@ GtkWidget *screenshooter_actions_dialog_new (ScreenshotData *sd)
       gtk_label_set_markup (GTK_LABEL (label),
         _("Watch for sensitive content, the uploaded image will be publicly\n"
           "available and there is no guarantee it can be certainly deleted.\n"
-          "Xfce is NOT affiliated with nor this integration is approved by Imgur™.\n"
-          "If you use this feature you must agree with Imgur™ "
-          "<a href=\"https://imgur.com/tos\">Terms of Service</a>."));
+          "Xfce is NOT affiliated with nor this integration is approved by 0x0."));
 
       popover = gtk_popover_new (image);
       gtk_container_add (GTK_CONTAINER (popover), label);
