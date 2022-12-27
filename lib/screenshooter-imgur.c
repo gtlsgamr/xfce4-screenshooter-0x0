@@ -49,7 +49,7 @@ imgur_upload_job (ScreenshooterJob *job, GArray *param_values, GError **error)
   xmlNode *root_node, *child_node;
 
   /*const gchar *upload_url = "https://api.imgur.com/3/upload.xml";*/
-  const gchar *upload_url = "http://0.vern.cc";
+  const gchar *upload_url = "https://0.vern.cc";
 
   GError *tmp_error = NULL;
 
@@ -134,7 +134,7 @@ imgur_upload_job (ScreenshooterJob *job, GArray *param_values, GError **error)
 
   char *abc = (guchar*) g_bytes_get_data (response, NULL);
 
-  printf("%s",abc+17);
+  printf("-------------------%s",abc+17);
   TRACE("found picture id %s\n", abc);
   xmlFreeDoc(doc);
   g_bytes_unref (response);
